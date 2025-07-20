@@ -10,7 +10,7 @@
     "url": "https://github.com/umami-software/umami.git"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server/index.js",
     "dev-turbo": "next dev -p 3001 --turbopack",
     "build": "npm-run-all check-env build-db check-db build-tracker build-geo build-app",
     "start": "next start",
@@ -44,6 +44,7 @@
     "change-password": "node scripts/change-password.js",
     "lint": "next lint --quiet",
     "prepare": "node -e \"if (process.env.NODE_ENV !== 'production'){process.exit(1)} \" || husky install",
+    "postinstall": "npx prisma migrate deploy",
     "postbuild": "node scripts/postbuild.js",
     "test": "jest",
     "cypress-open": "cypress open cypress run",
